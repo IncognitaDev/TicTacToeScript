@@ -10,7 +10,7 @@ const luisScript = (scenery, myMove) => {
     console.log(row2)
     console.log(row3)
 
-    const disp = scenery.reduce((acc, item, index) => {
+    const dispo = scenery.reduce((acc, item, index) => {
       if (item == '') {
         return acc = [...acc, index]
       }
@@ -24,91 +24,163 @@ const luisScript = (scenery, myMove) => {
       return acc
     }, [])
 
-    const addv = scenery.reduce((acc, item, index) => {
+    const adv = scenery.reduce((acc, item, index) => {
       if (item != myMove && item != '') {
         return acc = [...acc, index]
       }
       return acc
     }, [])
 
-    console.log('disp', disp)
+    console.log('dispo', dispo)
     console.log('my', my)
-    console.log('addv', addv)
+    console.log('adv', adv)
 
-    let play
-
-    const danger = addv.findIndex((item, index, arr) => (
+    const danger = adv.findIndex((item, index, arr) => (
       arr[index + 1] - item == 3 || arr[index + 1] - item == 6 || arr[index + 1] - item == 2 || arr[index + 1] - item == 4))
 
     if (
-      my.includes(0) && my.includes(2) && disp.includes(1) ||
-      my.includes(7) && my.includes(4) && disp.includes(1)
+      my.includes(0) && my.includes(2) && dispo.includes(1) ||
+      my.includes(7) && my.includes(4) && dispo.includes(1)
     ) {
       return 1
     }
     if (
-      my.includes(0) && my.includes(6) && disp.includes(3) ||
-      my.includes(4) && my.includes(5) && disp.includes(3)
+      my.includes(0) && my.includes(6) && dispo.includes(3) ||
+      my.includes(4) && my.includes(5) && dispo.includes(3)
     ) {
       return 3
     }
-    if (my.includes(2) && my.includes(8) && disp.includes(5) || my.includes(3) && my.includes(4) && disp.includes(5)) {
+    if (
+      my.includes(0) && my.includes(8) && dispo.includes(4) ||
+      my.includes(2) && my.includes(6) && dispo.includes(4)
+    ) {
+      return 4
+    }
+    if (
+      my.includes(2) && my.includes(8) && dispo.includes(5) ||
+      my.includes(3) && my.includes(4) && dispo.includes(5)
+    ) {
       return 5
     }
-    if (my.includes(2) && my.includes(4) && disp.includes(6)) {
+    if (
+      my.includes(2) && my.includes(4) && dispo.includes(6) ||
+      my.includes(0) && my.includes(3) && dispo.includes(6)
+    ) {
       return 6
     }
-    if (my.includes(1) && my.includes(4) && disp.includes(7)) {
+    if (
+      my.includes(1) && my.includes(4) && dispo.includes(7) ||
+      my.includes(6) && my.includes(8) && dispo.includes(7)
+    ) {
       return 7
     }
-    if (my.includes(0) && my.includes(4) && disp.includes(8)) {
+    if (my.includes(0) && my.includes(4) && dispo.includes(8)) {
       return 8
     }
 
+    console.log('passou primeiro bloco')
 
-    if (addv.includes(0) && addv.includes(2) && disp.includes(1)) {
+    if (
+      adv.includes(6) && adv.includes(3) && dispo.includes(0) ||
+      adv.includes(2) && adv.includes(1) && dispo.includes(0)
+    ) {
+      return 0
+    }
+    if (
+      adv.includes(0) && adv.includes(2) && dispo.includes(1) ||
+      adv.includes(7) && adv.includes(4) && dispo.includes(1)
+    ) {
       return 1
     }
     if (
-      addv.includes(0) && addv.includes(1) && disp.includes(2) ||
-      addv.includes(8) && addv.includes(5) && disp.includes(2)
+      adv.includes(0) && adv.includes(1) && dispo.includes(2) ||
+      adv.includes(8) && adv.includes(5) && dispo.includes(2) ||
+      adv.includes(6) && adv.includes(4) && dispo.includes(2)
     ) {
       return 2
     }
     if (
-      addv.includes(0) && addv.includes(6) && disp.includes(3)
+      adv.includes(0) && adv.includes(6) && dispo.includes(3) ||
+      adv.includes(4) && adv.includes(5) && dispo.includes(3)
     ) {
       return 3
     }
-    if (addv.includes(2) && addv.includes(8) && disp.includes(5)) {
-      return 5
-    }
     if (
-      addv.includes(2) && addv.includes(6) && disp.includes(4) ||
-      addv.includes(0) && addv.includes(8) && disp.includes(4) ||
-      addv.includes(3) && addv.includes(5) && disp.includes(4) ||
-      addv.includes(1) && addv.includes(7) && disp.includes(4)
+      adv.includes(2) && adv.includes(6) && dispo.includes(4) ||
+      adv.includes(0) && adv.includes(8) && dispo.includes(4) ||
+      adv.includes(3) && adv.includes(5) && dispo.includes(4) ||
+      adv.includes(1) && adv.includes(7) && dispo.includes(4)
     ) {
       return 4
     }
-    if (addv.includes(3) && addv.includes(4) && disp.includes(5)) {
+    if (
+      adv.includes(3) && adv.includes(4) && dispo.includes(5) ||
+      adv.includes(2) && adv.includes(8) && dispo.includes(5)
+    ) {
       return 5
     }
-    if (addv.includes(0) && addv.includes(3) && disp.includes(6)) {
+    if (
+      adv.includes(0) && adv.includes(3) && dispo.includes(6) ||
+      adv.includes(2) && adv.includes(4) && dispo.includes(6) ||
+      adv.includes(8) && adv.includes(7) && dispo.includes(6)
+    ) {
       return 6
     }
-    if (addv.includes(6) && addv.includes(8) && disp.includes(7)) {
+    if (
+      adv.includes(6) && adv.includes(8) && dispo.includes(7) ||
+      adv.includes(1) && adv.includes(4) && dispo.includes(7)
+
+    ) {
       return 7
     }
-    if (addv.includes(2) && addv.includes(5) && disp.includes(8)) {
+    if (
+      adv.includes(2) && adv.includes(5) && dispo.includes(8) ||
+      adv.includes(6) && adv.includes(7) && dispo.includes(8)
+    ) {
       return 8
     }
 
-    if (disp.length == 8 && (addv.includes(0) || addv.includes(2) || addv.includes(6) || addv.includes(8))) {
-
+    if (dispo.length == 8 && (adv.includes(0) || adv.includes(2) || adv.includes(6) || adv.includes(8))) {
       return 4
     }
 
+    console.log('passou segundo bloco')
+
+    if (
+      my.includes(4) && dispo.includes(1) && dispo.includes(7)
+    ) {
+      return 1
+    }
+    if (
+      my.includes(0) && dispo.includes(2) && dispo.includes(1) && dispo.includes(6)
+    ) {
+      return 2
+    }
+    if (my.includes(4) && dispo.includes(3) && dispo.includes(5)) {
+      return 3
+    }
+    if (my.includes(4) && dispo.includes(5) && dispo.includes(3)) {
+      return 5
+    }
+    if (
+      my.includes(0) && dispo.includes(3) && dispo.includes(8) && dispo.includes(6) ||
+      my.includes(0) && my.includes(8) && dispo.includes(6)
+    ) {
+      return 6
+    }
+    if (
+      my.includes(4) && dispo.includes(7) && dispo.includes(1)
+    ) {
+      return 7
+    }
+    if (
+      my.includes(0) && dispo.includes(3) && dispo.includes(8) ||
+      my.includes(0) && dispo.includes(2) && dispo.includes(8)
+    ) {
+      return 8
+    }
+
+    return dispo[0]
 
   }
 

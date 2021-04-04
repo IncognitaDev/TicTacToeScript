@@ -7,6 +7,8 @@ const $fieldList = document.querySelectorAll(".field");
 const $scoreBoardPlayer1 = document.querySelector(".score-player-1");
 const $scoreBoardPlayer2 = document.querySelector(".score-player-2");
 
+const $buttonPlay = document.querySelector(".button-play")
+
 const $scoreBoardWinner = document.querySelector(".scoreboard-name");
 
 const $userField1 = document.querySelector(".user-field-1");
@@ -388,3 +390,7 @@ const botMatch = () => {
     botMatch();
   }, 1000);
 };
+
+$buttonPlay.addEventListener("click", () => {
+  if (botActive) bot();
+})
