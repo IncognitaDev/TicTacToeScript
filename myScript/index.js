@@ -3,13 +3,6 @@ const luisScript = (scenery, myMove) => {
 
   if (scenery.includes('X') || scenery.includes('O')) {
 
-    const row1 = scenery.slice(0, 3)
-    const row2 = scenery.slice(3, 6)
-    const row3 = scenery.slice(6, 10)
-    console.log(row1)
-    console.log(row2)
-    console.log(row3)
-
     const dispo = scenery.reduce((acc, item, index) => {
       if (item == '') {
         return acc = [...acc, index]
@@ -30,19 +23,6 @@ const luisScript = (scenery, myMove) => {
       }
       return acc
     }, [])
-
-    // console.log('dispo', dispo)
-    // console.log('my', my)
-    // console.log('adv', adv)
-
-    // if (adv.length == 1) {
-    //   if (dispo.includes(0) && (adv.includes(3) || adv.includes(1))) {
-    //     return 0
-    //   }
-    //   if (dispo.includes(8) && (adv.includes(5) || adv.includes(7))) {
-    //     return 8
-    //   }
-    // }
 
     if (dispo.includes(0)) {
       if (
@@ -115,8 +95,6 @@ const luisScript = (scenery, myMove) => {
     }
 
 
-
-    console.log('passou primeiro bloco')
     if (dispo.includes(0)) {
       if (
         adv.includes(6) && adv.includes(3) ||
@@ -204,7 +182,6 @@ const luisScript = (scenery, myMove) => {
       return 4
     }
 
-    console.log('passou segundo bloco')
 
     if (
       my.includes(4) && dispo.includes(1) && dispo.includes(7)
@@ -260,9 +237,6 @@ const luisScript = (scenery, myMove) => {
         return 8
       }
     }
-
-
-    console.log("bloco base")
 
     if (dispo.includes(4)) {
       return 4
